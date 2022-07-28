@@ -6,6 +6,9 @@
         <entry key="..\:/android/Foody/app/src/main/res/drawable/bgr_item_list.xml" value="0.3111111111111111" />
         <entry key="..\:/android/Foody/app/src/main/res/drawable/ic_launcher_background.xml" value="0.35648148148148145" />
         <entry key="..\:/android/Foody/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
+        <entry key="..\:/android/Foody/app/src/main/res/layout/fragment_favorites.xml" value="0.2056159420289855" />
+        <entry key="..\:/android/Foody/app/src/main/res/layout/fragment_joker.xml" value="0.2056159420289855" />
+        <entry key="..\:/android/Foody/app/src/main/res/layout/fragment_recipes.xml" value="0.2056159420289855" />
         <entry key="..\:/android/Foody/app/src/main/res/layout/item_recipe.xml" value="0.2957427536231884" />
         <entry key="..\:/android/Foody/app/src/main/res/layout/navigation.xml" value="0.28306159420289856" />
         <entry key="..\:/android/Foody/app/src/main/res/menu/navigation.xml" value="0.36666666666666664" />
