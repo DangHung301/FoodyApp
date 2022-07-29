@@ -2,11 +2,8 @@ package com.example.foody
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
-import com.example.foody.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -15,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mapView()
+        loadFragment(RecipesFragment())
         selectionListener()
     }
 
@@ -23,21 +21,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun selectionListener() {
-        bottomNavigationView.setOnItemReselectedListener {
+        bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.recipes -> {
                     loadFragment(RecipesFragment())
-                    return@setOnItemReselectedListener
+                    true
                 }
 
                 R.id.favorites -> {
                     loadFragment(FavoritesFragment())
-                    return@setOnItemReselectedListener
+                    true
                 }
 
                 R.id.joker -> {
                     loadFragment(JokerFragment())
-                    return@setOnItemReselectedListener
+                    true
+                }
+                else -> {
+                    loadFragment(RecipesFragment())
+                    true
                 }
             }
         }
