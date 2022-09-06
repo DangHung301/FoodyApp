@@ -3,6 +3,9 @@ package com.example.foody
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.foody.presentation.ui.favorites.FavoritesFragment
+import com.example.foody.presentation.ui.joker.JokerFragment
+import com.example.foody.presentation.ui.recipes.RecipesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -37,6 +40,7 @@ class MainActivity : AppCompatActivity() {
                     loadFragment(JokerFragment())
                     true
                 }
+
                 else -> {
                     loadFragment(RecipesFragment())
                     true

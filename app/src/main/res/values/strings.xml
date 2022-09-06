@@ -8,4 +8,14 @@
     <string name="Joker_appbar">Joker</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="vegan">vegan</string>
+    //fake data
+    <string name="fake_title">Instant Pot Rice Pilaf</string>
+    <string name="fake_content">Some companies said the interns had just graduated from high school or even secondary schools when applying for the internship program and could only do certain tasks that they were trained for in Japan. Therefore, when returning to Vietnam to work, they have a lot to learn to match their colleagues with greater experience.</string>
+    <string name="fake_time">100</string>
+    <string name="icon_of_heart">icon of heart</string>
+    <string name="icon_of_time">icon of time</string>
+    <string name="icon_of_vegan">icon of vegan</string>
+    <string name="image_of_item">image of item</string>
+    <string name="filters">Filters</string>
 </resources>

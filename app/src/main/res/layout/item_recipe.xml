@@ -1,95 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp"
-    android:background="@drawable/bgr_item_list"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    android:layout_height="170dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    android:elevation="6dp"
+    android:orientation="horizontal"
+    app:cardCornerRadius="9dp">
 
-    <ImageView
-        android:id="@+id/img_recipe"
-        android:layout_width="170dp"
-        android:layout_height="200dp"
-        android:scaleType="center"
-        android:src="@drawable/img_test"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:text="Instant Pot Rice Pilaf"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/img_recipe"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text=" alsich asochnoasnc oaskoiashdfasbaoish akjab iasbfalks casohsaocasnlashf adopiascnapochas0i hoihfoaish"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/img_recipe"
-        app:layout_constraintTop_toBottomOf="@id/title" />
+        <ImageView
+            android:id="@+id/img_recipes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/image_of_item"
+            android:scaleType="center"
+            android:src="@drawable/img_test" />
 
-    <ImageView
-        android:id="@+id/ic_heart"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_heart"
-        app:layout_constraintBottom_toTopOf="@id/txt_heart"
-        app:layout_constraintStart_toEndOf="@id/img_recipe"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_weight="6"
+            android:layout_gravity="start"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/txt_heart"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="100"
-        android:textColor="#f44336"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/img_recipe"
-        app:layout_constraintTop_toBottomOf="@id/ic_heart" />
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/fake_content"
+                android:textFontWeight="600"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UnusedAttribute" />
 
-    <ImageView
-        android:id="@+id/ic_time"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_time"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@id/txt_time"
-        app:layout_constraintStart_toEndOf="@id/ic_heart"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        app:layout_constraintVertical_chainStyle="packed" />
+            <TextView
+                android:id="@+id/txt_content"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="3"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@string/fake_content"
+                android:textSize="14sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_title"
+                tools:ignore="NestedWeights" />
 
-    <TextView
-        android:id="@+id/txt_time"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="300"
-        android:textColor="#f44336"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txt_time"
-        app:layout_constraintTop_toBottomOf="@id/ic_time" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/item_heart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/ic_heart"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/icon_of_heart"
+                        android:src="@drawable/ic_heart"
+                        app:layout_constraintLeft_toLeftOf="@id/txt_content"
+                        app:layout_constraintTop_toBottomOf="@id/txt_content" />
+
+                    <TextView
+                        android:id="@+id/txt_heart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fake_time"
+                        android:textColor="#f44336"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ic_heart" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toRightOf="@id/item_heart"
+
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/ic_time"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/icon_of_time"
+                        android:src="@drawable/ic_time"
+                        app:layout_constraintLeft_toLeftOf="@id/txt_content"
+                        app:layout_constraintTop_toBottomOf="@id/txt_content" />
+
+                    <TextView
+                        android:id="@+id/txt_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fake_time"
+                        android:textColor="#ff8f00"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ic_heart" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/item_eco"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+
+                    app:layout_constraintLeft_toRightOf="@id/item_time"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/ic_eco"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="@string/icon_of_vegan"
+                        android:src="@drawable/ic_eco_on"
+                        app:layout_constraintLeft_toLeftOf="@id/txt_content"
+                        app:layout_constraintTop_toBottomOf="@id/txt_content" />
+
+                    <TextView
+                        android:id="@+id/txt_eco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/vegan"
+                        android:textColor="#00c853"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/ic_heart" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
