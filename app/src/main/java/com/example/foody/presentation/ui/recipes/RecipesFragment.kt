@@ -3,89 +3,38 @@ package com.example.foody.presentation.ui.recipes
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foody.R
-import com.example.foody.domain.model.RecipesModel
+import com.example.foody.domain.local.app_const.OnItemActionListener
+import com.example.foody.domain.model.FilterModel
+import com.example.foody.presentation.ui.recipes.adapter.FilterAdapter
+import com.example.foody.presentation.ui.recipes.adapter.RecipesAdapter
+import com.example.foody.presentation.ui.recipes.view_model.RecipesViewModel
+import com.example.foody.presentation.ui.recipes.widget.FilterBottomSheet
 
-class RecipesFragment : Fragment() {
-    val listData: List<RecipesModel> = listOf(
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Some companies said the interns had just graduated from high school or even secondary schools when applying for the internship program and could only do certain tasks that they were trained for in Japan. Therefore, when returning to Vietnam to work, they have a lot to learn to match their colleagues with greater experience.",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "Some companies said the interns had just graduated from high school or even secondary schools when applying for the internship program and could only do certain tasks that they were trained for in Japan. Therefore, when returning to Vietnam to work, they have a lot to learn to match their colleagues with greater experience."
-        ),
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Cơm gà",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "ncaos aiosna cabcacascn j"
-        ),
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Cơm gà",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "ncaos aiosna cabcacascn j"
-        ),
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Cơm gà",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "ncaos aiosna cabcacascn j"
-        ),
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Cơm gà",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "ncaos aiosna cabcacascn j"
-        ),
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Cơm gà",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "ncaos aiosna cabcacascn j"
-        ),
-        RecipesModel(
-            true,
-            30,
-            0,
-            "Cơm gà",
-            50,
-            "https://9mobi.vn/cf/images/2015/03/nkk/hinh-dep-1.jpg",
-            "ncaos aiosna cabcacascn j"
-        ),
-    )
+class RecipesFragment() : Fragment() {
+    private val recipesViewModel: RecipesViewModel = RecipesViewModel()
+    private val adapterFilter = FilterAdapter(recipesViewModel.dataFillter.toMutableList())
+    private var filterBottomSheet: FilterBottomSheet<FilterAdapter> =
+        FilterBottomSheet(adapterFilter)
 
-    lateinit var recyclerView: RecyclerView
+
+    private lateinit var rvRecipes: RecyclerView
+    private lateinit var btnFilter: ImageButton
 
     private fun createUi(view: View) {
-        recyclerView = view.findViewById(R.id.rv_recipes)
+        rvRecipes = view.findViewById(R.id.rv_recipes)
+        btnFilter = view.findViewById(R.id.btn_menu)
+
     }
 
     private fun createRecyclerView(context: Context) {
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = RecipesAdapter(listData)
-        recyclerView.adapter = adapter
+        //rv of recipes
+        rvRecipes.layoutManager = LinearLayoutManager(context)
+        rvRecipes.adapter = RecipesAdapter(recipesViewModel.fakeData)
     }
 
     override fun onCreateView(
@@ -94,7 +43,36 @@ class RecipesFragment : Fragment() {
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_recipes, container, false)
         createUi(view)
+        activity?.let {
+            showBottomSheet(it)
+        }
         activity?.let { createRecyclerView(it) }
+
         return view
+    }
+
+    private fun setOnclickItemFilter() {
+        adapterFilter.setActionListener(object : OnItemActionListener {
+            override fun onTap(view: View, position: Int) {
+                selectItemData(recipesViewModel.dataFillter[position])
+            }
+
+            override fun onLongTap(view: View, position: Int) {
+                TODO("Not yet implemented")
+            }
+
+        })
+    }
+
+    fun selectItemData(option: FilterModel) {
+        recipesViewModel.selectFilter(option)
+        adapterFilter.updateData(recipesViewModel.dataFillter as MutableList<FilterModel>)
+    }
+
+    private fun showBottomSheet(context: Context) {
+        setOnclickItemFilter()
+        btnFilter.setOnClickListener {
+            filterBottomSheet.show(parentFragmentManager, filterBottomSheet.tag)
+        }
     }
 }

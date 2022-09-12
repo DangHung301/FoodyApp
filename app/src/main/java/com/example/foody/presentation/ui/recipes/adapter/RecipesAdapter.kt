@@ -1,4 +1,4 @@
-package com.example.foody.presentation.ui.recipes
+package com.example.foody.presentation.ui.recipes.adapter
 
 import android.view.LayoutInflater
 import android.view.View
